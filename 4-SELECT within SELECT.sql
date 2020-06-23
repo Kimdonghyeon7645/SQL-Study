@@ -82,9 +82,17 @@ SELECT continent, name FROM world
 -- 9번 문제
 -- Find the continents where all countries have a population <= 25000000. Then find the names of the countries associated with these continents. Show name, continent and population.
 -- 모든 나라가 인구수 25000000(2천5백만)명보다 작은 대륙을 찾아서, 대륙에 대한 나라들의 이름들을 찾아서, 그나라의 이름과 대륙, 인구를 출력하세요.
-
+SELECT name, continent, population FROM world x
+ WHERE 25000000 >= 
+ ALL(SELECT population FROM world y
+     WHERE x.continent = y.continent)
 
 
 -- 10번 문제
 -- Some countries have populations more than three times that of any of their neighbours (in the same continent). Give the countries and continents.
--- 
+-- 어떤 나라들은 같은 대륙의 이웃나라보다 3배이상의 인구를 가지고 있습니다. 그 나라와 대륙을 출력하세요.
+SELECT name, continent FROM world x
+ WHERE population / 3 > 
+    ALL(SELECT population FROM world y
+      WHERE x.continent = y.continent
+        AND x.name != y.name)
