@@ -96,3 +96,4 @@ SELECT name, continent FROM world x
     ALL(SELECT population FROM world y
       WHERE x.continent = y.continent
         AND x.name != y.name)
+-- 피드백 : ALL() 에 * 같은 연산자를 붙이면 에러가 난다. 정적인 population 에 연산자를
