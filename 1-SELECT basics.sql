@@ -73,3 +73,22 @@ SELECT name, ROUND(gdp/population, -3) FROM world
 SELECT name, capital FROM world
  WHERE LENGTH(name) = LENGTH(capital)
 
+
+-- 12번 문제
+-- Show the name and the capital where the first letters of each match. Don't include countries where the name and the capital are the same word.
+-- 수도이름과 나라이름의 첫글자가 일치하는 나라와 수도를 출력하세요. 대신 나라와 수도이름이 일치하는 경우는 출력하지 않습니다. (LEFT 내장함수와 <>(!=의 역할)을 활용)
+SELECT name, capital FROM world
+ WHERE LEFT(name, 1) = LEFT(capital, 1)
+   AND name <> capital
+
+
+-- 13번 문제
+-- Find the country that has all the vowels and no spaces in its name.
+-- 나라의 이름에 모든 모음과 공백이 들어가지 않은 나라를 찾아 그 이름을 출력하세요.
+SELECT name FROM world
+WHERE name LIKE '%a%'
+  AND name LIKE '%e%'
+  AND name LIKE '%i%'
+  AND name LIKE '%o%'
+  AND name LIKE '%u%'
+  AND name NOT LIKE '% %'
