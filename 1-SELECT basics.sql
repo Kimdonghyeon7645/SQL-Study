@@ -41,14 +41,35 @@ SELECT name FROM world
 
 -- 7번 문제
 -- Show the countries that are big by area or big by population. Show name, population and area.
--- 면적이 3백만보다 크거나, 인구수가 2억5천만보다 크면 큰 나라라고 할때, 큰 나라들의 이름과 인구, 면적을 출력하세요.
+-- 면적이 3백만보다 크거나, 인구 수가 2억5천만보다 크면 큰 나라라고 할때, 큰 나라들의 이름과 인구, 면적을 출력하세요.
 SELECT name, population, area FROM world
  WHERE population > 250000000 OR area > 3000000
 
 
 -- 8번 문제
--- 
--- 
+-- Exclusive OR (XOR). Show the countries that are big by area (more than 3 million) or big by population (more than 250 million) but not both. Show name, population and area.
+-- 면적만 3백만보다 큰 나라 또는, 인구 수만 2억5천만보다 큰 나라를 (XOR) 출력하세요.
+SELECT name, population, area FROM world
+ WHERE population > 250000000 XOR area > 3000000
 
 
+-- 9번 문제
+-- Show the name and population in millions and the GDP in billions for the countries of the continent 'South America'. 
+-- 남미 대륙의 나라들의 이름과 인구를 백만명으로 나눈 값, GOD를 10억명으로 나눈 값을 소수점 셋째짜리에서 반올림해서 각각 출력하세요. (ROUND 내장함수를 활용)
+SELECT name, ROUND(population/1000000, 2), ROUND(gdp/1000000000, 2) FROM world
+ WHERE continent = 'South America'
+
+
+-- 10번 문제
+-- Show the name and per-capita GDP for those countries with a GDP of at least one trillion (1000000000000; that is 12 zeros). Round this value to the nearest 1000.
+-- gdp가 최소 1조보다 많은 나라들의 이름과 1인당 gdp를 백의 자리에서 반올림해서 출력하세요.
+SELECT name, ROUND(gdp/population, -3) FROM world
+ WHERE gdp > 1000000000000
+
+
+-- 11번 문제
+-- Show the name and capital where the name and the capital have the same number of characters.
+-- 수도와 나라의 이름 글자수가 동일한 나라의 이름과 수도를 출력하세요. (LENGTH 내장함수를 활용)
+SELECT name, capital FROM world
+ WHERE LENGTH(name) = LENGTH(capital)
 
