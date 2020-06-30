@@ -77,6 +77,10 @@ SELECT continent, name, area FROM world
 -- 알파벳순(alphabetically)으로 첫번째에 오는 나라의 대륙과 이름을 출력하세요.
 SELECT continent, name FROM world
  GROUP BY continent
+-- 위의 비상관 쿼리말고 아래의 상관 쿼리로 구해줄 수도 있다.
+SELECT continent, name FROM world x
+ WHERE name = (SELECT name FROM world y
+ WHERE x.continent = y.continent ORDER BY name LIMIT 1)
 
 
 -- 9번 문제
@@ -85,7 +89,7 @@ SELECT continent, name FROM world
 SELECT name, continent, population FROM world x
  WHERE 25000000 >= 
  ALL(SELECT population FROM world y
-     WHERE x.continent = y.continent)
+      WHERE x.continent = y.continent)
 
 
 -- 10번 문제
