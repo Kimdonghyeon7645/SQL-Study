@@ -50,5 +50,8 @@ SELECT continent, COUNT(name) FROM world
 -- 8번 문제
 -- List the continents that have a total population of at least 100 million.
 -- 최소 1억 이상의 총 인구를 가진 대륙들을 출력하세요.
-
--- 못품 ㅎㅎ;;
+SELECT continent FROM world x
+ WHERE 100000000 <= 
+ (SELECT SUM(population) FROM world y
+   WHERE x.continent = y.continent)
+ GROUP BY continent
