@@ -87,6 +87,9 @@ SELECT * FROM nobel
 -- EUGENE O'NEILL 가 탄 상의 모든 정보를 출력하세요.
 SELECT * FROM nobel
  WHERE winner = 'EUGENE O\'NEILL'
+-- 아래와 같이 이스케이프 처리를 안하고도 처리할 수 있다.
+SELECT * FROM nobel
+ WHERE winner = "EUGENE O'NEILL"
 
 
 -- 13번 문제
