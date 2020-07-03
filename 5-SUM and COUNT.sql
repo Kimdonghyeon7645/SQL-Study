@@ -55,3 +55,13 @@ SELECT continent FROM world x
  (SELECT SUM(population) FROM world y
    WHERE x.continent = y.continent)
  GROUP BY continent
+-- 이같이 상관 쿼리로 작성할 수는 있지만 시간이 많이 걸림...
+
+-- 아래와 같이 비상관 쿼리로 작성할 수 있음
+SELECT continent FROM world
+ GROUP BY continent
+HAVING 100000000 < SUM(population)
+-- (1시간 삽질노트 : GROUP BY 한 뒤의 값을 WHERE 에서 필터링 해줄려고 했는데 안돼서 별별 방법을 다 썼으나 실패했었다.
+-- 찾고 찾다보니까 WHERE 다음 GROUP BY가 실행이 되기에, GROUP BY한 값을 필터링할 수 없던 것이였다. 
+-- GROUP BY한 값을 다시 필터링 해주고 싶으면 HAVING 절을 이용해야 했었다.
+-- 다시한번 내가 모르던 것에 대해, HAVING 절에 대해 배워보는 시간이 되었다.)
