@@ -84,10 +84,8 @@ SELECT matchid, mdate, COUNT(teamid)
 -- 13번문제 : List every match with the goals scored by each team as shown. This will use "CASE WHEN" which has not been explained in any previous exercises.
 -- 
 SELECT mdate,
-  team1,
-  sum(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,   -- score1 앞에 AS 가 생략
-  team2,
-  sum(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
+  team1, sum(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,   -- score1 앞에 AS 가 생략
+  team2, sum(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
   FROM game LEFT JOIN goal ON matchid = id
   GROUP BY mdate, team1, team2
   ORDER BY mdate, team1, team2  -- 정렬은 생략해도 되긴 됨
