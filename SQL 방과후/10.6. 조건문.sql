@@ -1,0 +1,16 @@
+use sql_study;
+
+-- 학번이 짝수면 짝수, 홀수면 홀수 출력하는 쿼리문
+# if(조건문, 참일때 값, 거짓일때 값)
+select 학번, if(학번 % 2 = 0, '짝수', '홀수') as 결과 from 이수;
+
+-- 기말 성적에 따라서 A~E를 출력하는 쿼리문
+select 기말성적,
+		CASE truncate(기말성적 / 10, 0)
+			WHEN 10 THEN 'A'
+			WHEN 9 THEN 'A'
+			WHEN 8 THEN 'B'
+			WHEN 7 THEN 'C'
+			WHEN 6 THEN 'D'
+			ELSE 'E'
+		END as 결과 from 이수;
