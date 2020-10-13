@@ -6,5 +6,5 @@ select 중간성적, 기말성적, (중간성적+기말성적)/2 as 중간기말
  
 
 -- 학생별로 이수한 과목 중간성적, 기말성적 합계, 마지막 행에 전체 학생의 중간성적, 기말성적 합계 추가해 출력하는 쿼리문
-# rollup :
+# rollup : group by 로 그룹핑한 로우(행) 들의 합계를 마지막 구해줌 (group by 절 뒤에 with rollup 추가) (집계함수가 없으면 그룹핑해도 합계가 출력되지 않음)
 select 학번, sum(중간성적), sum(기말성적) from 이수 group by 학번 with rollup;
