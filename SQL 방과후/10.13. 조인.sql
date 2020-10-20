@@ -5,7 +5,7 @@ use sql_study;
 # inner join () = () : 동등 조인
 select 교과목번호 from 이수 i inner join (select * from 학생 where 학번 like '2%') s on s.학번 = i.학번;
 select 교과목번호 from 이수 i join (select * from 학생 where 학번 like '2%') s on s.학번 = i.학번;
-select 교과목번호 from 이수, 학생 where 학번 like '2%';		# 묵시적으로 join 표현을 생략 가능
+select 교과목번호 from 이수, 학생 where 학번 like '2%';		# 묵시적으로 join 표현을 생략 -> 교차조인(곱)이 됨 (동등 조인이 아님!)
 select 교과목번호 from 이수 where 학번 like '2%';	# join 없이도 해결 가능
 
 
