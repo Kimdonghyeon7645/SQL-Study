@@ -15,6 +15,9 @@ select count(교수.순위) as count
 # 위는 (1) 실행 구문
 
 -- 공부 릴레이션과 같은 뷰(View)가 생성되도록 SQL구문 작성
+select 교수.no as 번호, title as 내용 
+  from 교수 inner join 이론 on 교수.no = 이론.no
+ where title <> "수업";
 
 
 # 아래는 상태 테스트 구문 
