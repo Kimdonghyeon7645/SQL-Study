@@ -1,0 +1,2 @@
+- [SQLD 기출문제 정리](https://stricky.tistory.com/273)
+- [2007년 국가직 7급 데이터베이스론 문제 정답](http://www.ggulpass.com/2015/09/2007-7_56.html)
