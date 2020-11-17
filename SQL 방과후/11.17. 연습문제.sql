@@ -19,4 +19,4 @@ select count(교수.순위) as count
 
 # 아래는 상태 테스트 구문 
 select * from 교수;
-select * from 교수 natural join 이론
+select * from 교수 natural join 이론;
