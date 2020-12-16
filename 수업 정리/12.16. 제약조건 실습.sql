@@ -38,5 +38,15 @@ delete from parent where id = 3;
 
 update parent set id = 20 where id = 2;
 
-select * from child1;
-select * from child2;
+
+
+# 문제 풀기
+
+create table child3 (
+	ppap	int		not null,
+    f_key	int,
+    foreign key (f_key)	references parent(id)
+);
+desc child3;
+select * from information_schema.table_constraints
+	where table_name = 'child3';
