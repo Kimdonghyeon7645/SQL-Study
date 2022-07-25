@@ -1,0 +1,9 @@
+SELECT  a.CART_ID
+FROM    (
+    SELECT  CART_ID
+    FROM    CART_PRODUCTS
+    WHERE   NAME IN ('Milk', 'Yogurt')
+    GROUP BY CART_ID, NAME
+) a
+GROUP BY a.CART_ID
+HAVING  COUNT(*) > 1
