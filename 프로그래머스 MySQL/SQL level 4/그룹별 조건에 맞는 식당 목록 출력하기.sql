@@ -1,0 +1,27 @@
+SELECT (
+    SELECT p.MEMBER_NAME
+      FROM MEMBER_PROFILE p
+     WHERE p.MEMBER_ID = r.MEMBER_ID
+) AS MEMBER_NAME
+     , r.REVIEW_TEXT
+     , DATE_FORMAT(r.REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
+  FROM REST_REVIEW r
+ WHERE r.MEMBER_ID IN (
+    SELECT MEMBER_ID
+      FROM (
+        SELECT MEMBER_ID
+             , COUNT(*) AS M_COUNT
+          FROM REST_REVIEW
+         GROUP BY MEMBER_ID
+      ) a
+     INNER JOIN
+      (
+        SELECT COUNT(*) AS MAX_COUNT
+          FROM REST_REVIEW
+         GROUP BY MEMBER_ID
+         ORDER BY COUNT(*) DESC
+         LIMIT 1
+      ) b
+        ON a.M_COUNT = b.MAX_COUNT
+ )
+ ORDER BY r.REVIEW_DATE, r.REVIEW_TEXT;
